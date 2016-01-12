@@ -3,10 +3,12 @@ defmodule AssertDiff.Mixfile do
 
   def project do
     [app: :assert_diff,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description,
+     package: package,
      deps: deps]
   end
 
@@ -17,16 +19,22 @@ defmodule AssertDiff.Mixfile do
     [applications: [:logger]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     []
+  end
+
+  defp description do
+    """
+    assert_diff which fallbacks to git diff
+    """
+  end
+
+  defp package do
+    [
+     files: ["lib", "mix.exs", "README*"],
+     maintainers: ["ske77"],
+     licenses: ["Apache 2.0"],
+     links: %{"GitHub" => "https://github.com/ske77/assert_diff"}
+    ]
   end
 end

@@ -9,7 +9,7 @@ It works ONLY within git repo.
   1. Add assert_diff to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:assert_diff, "~> 0.0.1"}]
+          [{:assert_diff, "~> 0.0.2"}]
         end
 
   2. Import it to your test case:
