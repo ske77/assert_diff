@@ -26,17 +26,22 @@ defmodule AssertDiff do
       File.open(a_path, [:write], fn(f) -> IO.write(f, left) end)
       File.open(b_path, [:write], fn(f) -> IO.write(f, right) end)
 
-      { output, 1} = System.cmd("git", ["diff", "--color", "--no-index", a_path, b_path])
+      case System.cmd("git", ["diff", "--color", "--no-index", a_path, b_path]) do
+        { output, 1 } ->
+
+          output = output
+                   |> String.split("\n")
+                   |> Enum.slice(4..-1)
+                   |> Enum.join("\n")
+
+          assert false, message: "\nassert diff failed:\n\n" <> output
+
+        { "", 0 } -> :ok
+      end
 
       File.rm!(a_path)
       File.rm!(b_path)
 
-      output = output
-                |> String.split("\n")
-                |> Enum.slice(4..-1)
-                |> Enum.join("\n")
-
-      assert unquote(call), message: "\nassert diff failed:\n\n" <> output
     end
   end
 
