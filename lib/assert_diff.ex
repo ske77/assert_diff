@@ -11,7 +11,7 @@ defmodule AssertDiff do
     _expr = Macro.escape(expr)
     call = {operator, meta, [Macro.var(:left, __MODULE__), Macro.var(:right, __MODULE__)]}
 
-    working_directory = System.cwd <> "/"
+    working_directory = System.cwd <> "/tmp/"
 
     a_path = working_directory <> random_hex
     b_path = working_directory <> random_hex

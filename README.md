@@ -16,7 +16,10 @@ It works ONLY within git repo.
 
         import AssertDiff
 
-  3. Use it:
+  3. Make sure that you have tmp directory: your_app/tmp
+
+
+  4. Use it:
 
         test "some test goes here" do
           assert_diff "Cat" == "Dog"
