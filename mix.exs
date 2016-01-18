@@ -3,8 +3,8 @@ defmodule AssertDiff.Mixfile do
 
   def project do
     [app: :assert_diff,
-     version: "0.0.4",
-     elixir: "~> 1.1",
+     version: "0.0.5",
+     elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description,
